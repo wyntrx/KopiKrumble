@@ -1,0 +1,70 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- END head -->
+
+    <section class="site-hero overlay" style="background-image: url({% static 'images/room1.jpg' %})" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row site-hero-inner justify-content-center align-items-center">
+          <div class="col-md-10 text-center" data-aos="fade-up">
+            <span class="custom-caption text-uppercase text-white d-block  mb-3">Welcome To 5 <span class="fa fa-star text-primary"></span>   Hotel</span>
+            <h1 class="heading">A Best Place to Collaborate with your team</h1>
+          </div>
+        </div>
+      </div>
+
+      <a class="mouse smoothscroll" href="#next">
+        <div class="mouse-icon">
+          <span class="mouse-wheel"></span>
+        </div>
+      </a>
+    </section>
+    <!-- END section -->
+
+    <section class="ftco-section">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-5">
+              <div class="login-wrap p-5 mt-5 pb-4">
+                <h3 class="text-center mb-4">Reservation</h3>
+                <!-- <form method="POST" action="{% url 'user_app:add_new_user' %}" class="signup-form"></form> -->
+                <form method="POST" action="#" class="signup-form">
+                  {% csrf_token %}
+                  <div class="form-group mb-3">
+                    <label class="font-weight-bold text-black" >Date:</label>
+                    <div class="field-icon-wrap">
+                      <div class="icon"><span class="icon-calendar"></span></div>
+                      <input type="date" id="date" name="date"  required="True" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="font-weight-bold text-black" >Full name:</label>
+                    <div class="field-icon-wrap">
+                      <input name="name" type="text" class="form-control" placeholder="Enter your Full name">
+                    </div>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="font-weight-bold text-black" for="lastname">Phone number:</label>
+                    <div class="field-icon-wrap">
+                      <input name="phone" type="text" class="form-control" placeholder="Enter your Phone number">
+                    </div>
+                    
+                  </div>
+                    
+                  <div class="form-group">
+                    <button type="submit" class="form-control btn btn-danger submit px-3">Add</button>
+                  </div>
+                  <!-- <div class="form-group">
+                    <button type="submit" class="form-control btn btn-secondary px-3">Cancel</button>
+                  </div> -->
+                </form>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
+{% endblock content %}

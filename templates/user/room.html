@@ -1,0 +1,109 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- END head -->
+
+    <section class="site-hero overlay" style="background-image: url({% static 'images/room1.jpg' %})" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row site-hero-inner justify-content-center align-items-center">
+          <div class="col-md-10 text-center" data-aos="fade-up">
+            <span class="custom-caption text-uppercase text-white d-block  mb-3">Welcome To 5 <span class="fa fa-star text-primary"></span>   Hotel</span>
+            <h1 class="heading">A Best Place to Collaborate with your team</h1>
+          </div>
+        </div>
+      </div>
+
+      <a class="mouse smoothscroll" href="#next">
+        <div class="mouse-icon">
+          <span class="mouse-wheel"></span>
+        </div>
+      </a>
+    </section>
+    <!-- END section -->
+    <style>
+        .products img {
+            width: 64px;
+            height: 64px;
+        }
+    </style>
+    <div class="container">
+        <table class="table table-striped table-hover" id="room_tb">
+            <thead>
+                <tr>
+                    <th>Room Type</th>
+                    <th>Status</th>
+                    <th>Room Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for room in room %}
+                <tr>
+                    <td>{{room.get_room_type_display}}</td>
+                    <td>{{room.get_status_display}}</td>
+                    <td>No.{{room.roomnumber}}</td>
+                    <td>
+                        <a type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="           
+                        #newModal-{{room.id}}">View</a>
+                        <a type="button" class="btn btn-primary" href="#">Reserve</a>
+                        <input type="hidden" name="room_id" value={{room.id}}>
+                    </td>      
+                </tr>
+                <!--view modal-->
+                <div class="modal fade" id="newModal-{{room.id}}" role="dialog">
+                    <div class="modal-dialog ">
+                    </div>
+                      <div class="modal-body">
+                          <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h3 class="modal-title">ROOM INFORMATION</h3>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                              <form id="updateForm" method="post" >
+                              {% csrf_token %}
+                                <div class="modal-body">
+                                  <input type="number" name="u-id" value = {{room.id}} hidden>
+                                    <div class="container">
+                                        <div class = "row">
+                                            <div class = "col-sm-5">
+                                            <h4>Room Type</h4>
+                                            <p>{{room.get_room_type_display}}</p>
+                                            </div>
+                                            <div class = "col-sm-5">
+                                            <h4>Time Slot</h4>
+                                            <p>{{room.get_time_slot_display}}</p>
+                                            </div>
+                                        </div>
+                                        <div class = "row">
+                                            <div class = "col-sm-5">
+                                            <h4>Price</h4>
+                                            <p>{{room.price}}</p>
+                                            </div>
+                                            <div class = "col-sm-5">
+                                            <h4>Status</h4>
+                                            <p>{{room.get_status_display}}</p>
+                                            </div>
+                                            <div class = "col-sm-5">
+                                                <h4>Room Number</h4>
+                                                <p>No.{{room.roomnumber}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ClOSE</button>
+                                </div>
+                              </form>
+                             </div>
+                          </div>
+                      </div>
+                </div>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock content %}

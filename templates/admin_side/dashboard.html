@@ -1,0 +1,406 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sogo Hotel by Colorlib.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=|Roboto+Sans:400,700|Playfair+Display:400,700">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fancybox.min.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome/css/font-awesome.min.css' %}">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    
+    <header class="site-header js-site-header">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="home">Sogo Conference Room Reservation</a></div>
+          <div class="col-6 col-lg-8">
+
+
+            <div class="site-menu-toggle js-site-menu-toggle"  data-aos="fade"> 
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <!-- END menu-toggle -->
+
+            <div class="site-navbar js-site-navbar">
+              <nav role="navigation">
+                <div class="container">
+                  <div class="row full-height align-items-center">
+                    <div class="col-md-6 mx-auto">
+                      <ul class="list-unstyled menu">
+                        <li class="active"><a href="{% url 'user_app:home' %}">Home</a></li>
+                        <li><a href="rooms.html">Rooms</a></li>
+                        <li><a href="about">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact">Contact</a></li>
+                        <li><a href="reservation.html">Reservation</a></li>
+                        <li><a href="{% url 'user_app:login' %}">Logout</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- END head -->
+
+    <section class="site-hero overlay" style="background-image: url({% static 'images/room1.jpg' %})" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row site-hero-inner justify-content-center align-items-center">
+          <div class="col-md-10 text-center" data-aos="fade-up">
+            <span class="custom-caption text-uppercase text-white d-block  mb-3">Welcome To 5 <span class="fa fa-star text-primary"></span>   Hotel</span>
+            <h1 class="heading">Welcome to Dashboard</h1>
+          </div>
+        </div>
+      </div>
+
+      <a class="mouse smoothscroll" href="#next">
+        <div class="mouse-icon">
+          <span class="mouse-wheel"></span>
+        </div>
+      </a>
+    </section>
+    <!-- END section -->
+    <style>
+        .products img {
+            width: 64px;
+            height: 64px;
+        }
+    </style>
+    
+    <section class="section bg-light pb-0"  >
+      <div class="container">
+        <div class="row check-availabilty" id="next">
+          <div class="block-32" data-aos="fade-up" data-aos-offset="-200">
+            <form action="#">
+              <div class="row">
+                
+                <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
+                  <label for="checkout_date" class="font-weight-bold text-black">Date</label>
+                  <div class="field-icon-wrap">
+                    <div class="icon"><span class="icon-calendar"></span></div>
+                    <input type="text" id="checkout_date" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
+                  <div class="row">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                      <label for="adults" class="font-weight-bold text-black">Time</label>
+                      <div class="field-icon-wrap">
+                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                        <select name="" id="adults" class="form-control">
+                          <option value="">Morning</option>
+                          <option value="">Afternoon</option>
+                          <option value="">Evening</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3 mb-md-0">
+                      <label for="children" class="font-weight-bold text-black">Room Type</label>
+                      <div class="field-icon-wrap">
+                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                        <select name="" id="children" class="form-control">
+                          <option value="">A</option>
+                          <option value="">B</option>
+                          <option value="">C</option>
+                          <option value="">D</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3 align-self-end">
+                  <button class="btn btn-primary btn-block text-white">Search</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+        </div>
+    <!-- </div>
+    </section> --> 
+    
+    <!--filter search form-->
+    <div class="inner-block">
+      <table class="table table-striped table-hover products">
+          <thead>
+              <tr>
+                  <th>Date</th>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Reservation ID</th>
+                  <th>Room</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for reserved in reserve %}
+              <tr>
+                  <td>{{reserved.date}}</td>
+                  <td>{{reserved.name}}</td>
+                  <td>{{reserved.phone}}</td>
+                  <td>{{reserved.reservation_id}}</td>
+                  <td>{{reserved.room_id}}</td>
+                 
+                  <td>
+                      <a type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="           
+                      #newModal-{{reserved.reservation_id}}">Info</a>
+                      <a type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="           
+                      #example-{{reserved.reservation_id}}">Delete</a>
+                  </td>
+                  
+              </tr>
+              <!--view modal-->
+              <div class="modal fade" id="newModal-{{reserved.reservation_id}}" role="dialog">
+                <div class="modal-dialog ">
+                </div>
+                  <div class="modal-body">
+                      <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Reservation Information</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                          <form id="updateForm" method="post" >
+                          {% csrf_token %}
+                            <div class="modal-body">
+                              <input type="number" name="reservation_id" value = {{reserved.reservation_id}} hidden>
+                              <div class = "row">
+                                <div class = "col-sm-5">
+                                  <label>Name</label>
+                                  <input type="text" class="form-control" id="id-name"  name = "name" value={{reserved.name}}>
+                                </div>
+                                <div class = "col-sm-5">
+                                  <label>Phone</label>
+                                  <input type="text" class="form-control" id="id-phone"  name = "phone" value={{reserved.phone}}>
+                                </div>
+                              </div>
+                              <div class = "row">
+                                <div class = "col-sm-5">
+                                  <label>Room</label>
+                                  <input type="text" class="form-control" id="id-room-id"  name = "room_id" value={{reserved.room_id}}>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-primary">UPDATE</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                            </div>
+                          </form>
+                         </div>
+                      </div>
+                  </div>
+            </div>
+
+            <!--delete modal-->
+                <!-- The Modal -->
+                <div class="modal" id="example-{{user.id}}">
+                  <div class="modal-dialog">
+                  <div class="modal-content">
+                  
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                      <h4 class="modal-title">Modal Heading</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                          <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">DELETE RECORD</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <form id="deleteForm" method="post" >
+                                {% csrf_token %} 
+                                <div class="modal-body">                       
+                                  <input type="text" name="reservation-id" value = {{reserved.reservation_id}} hidden>
+                                  Are you sure you want to delete this reservation?
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                                  <button type="submit" id = "btnDelete" name = "btnDelete" class="btn btn-primary">YES</button>
+                                </div>
+                              </div>
+                            </form>
+                            </div>
+                          </div>
+                      Modal body..
+                      </div>
+                      
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </div>
+                      
+                  </div>
+                  </div>
+              </div>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</section>
+
+
+
+
+<!--counter-->
+<div class="container">
+	<div class="row">
+	    <br/>
+	   <div class="col text-center">
+		<h2>Most Used Rooms</h2>
+		</div>
+		
+             
+		
+	</div>
+		<div class="row text-center">
+	        <div class="col">
+	        <div class="counter">
+      <h2 class="timer count-title count-number" data-to="100" data-speed="1500"></h2>
+       <h3 class="count-text ">Room A</h3>
+    </div>
+	        </div>
+              <div class="col">
+               <div class="counter">
+      <h2 class="timer count-title count-number" data-to="1700" data-speed="1500"></h2>
+      <h3 class="count-text ">Room B</h3>
+    </div>
+              </div>
+              <div class="col">
+                  <div class="counter">
+      <h2 class="timer count-title count-number" data-to="11900" data-speed="1500"></h2>
+      <h3 class="count-text">Room C</h3>
+    </div></div>
+         </div>
+</div>
+
+
+
+<!--Graph-->
+Graph Here
+<canvas id="lineChart"></canvas>
+
+
+
+
+
+
+    <section class="section bg-image overlay" style="background-image: url({% static 'images/hero_4.jpg' %});">
+        <div class="container" >
+          <div class="row align-items-center">
+            <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
+              <h2 class="text-white font-weight-bold">A Best Place To Stay. Reserve Now!</h2>
+            </div>
+            <div class="col-12 col-md-6 text-center text-md-right" data-aos="fade-up" data-aos-delay="200">
+              <a href="reservation.html" class="btn btn-outline-white-primary py-3 text-white px-5">Reserve Now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <footer class="section footer-section">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-md-3 mb-5">
+            <ul class="list-unstyled link">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+             <li><a href="#">Rooms</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-5">
+            <ul class="list-unstyled link">
+              <li><a href="#">The Rooms &amp; Suites</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Restaurant</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-5 pr-md-5 contact-info">
+            <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
+            <!-- <li>198 West 21th Street, <br> Suite 721 New York NY 10016</li> -->
+            <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Address:</span> <span> Cebu City </span></p>
+            <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Phone:</span> <span> +639 563 985 075 <br>+639 658 855 989 </span></p>
+            <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span> <span> manuelgwyneth97@gmail.com <br> emanuel.rabe18@gmail.com</span></p>
+          </div>
+          <div class="col-md-3 mb-5">
+            <p>Sign up for our newsletter</p>
+            <form action="#" class="footer-newsletter">
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email...">
+                <button type="submit" class="btn"><span class="fa fa-paper-plane"></span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row pt-5">
+          <p class="col-md-6 text-left">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+            
+          <p class="col-md-6 text-right social">
+            <a href="#"><span class="fa fa-tripadvisor"></span></a>
+            <a href="#"><span class="fa fa-facebook"></span></a>
+            <a href="#"><span class="fa fa-twitter"></span></a>
+            <a href="#"><span class="fa fa-linkedin"></span></a>
+            <a href="#"><span class="fa fa-vimeo"></span></a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+    
+    
+    <script src="{% static 'js/aos.js' %}"></script>
+    
+    <script src="{% static 'js/bootstrap-datepicker.js' %}"></script> 
+    <script src="{% static 'js/jquery.timepicker.min.js' %}"></script> 
+
+    
+
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
