@@ -57,7 +57,7 @@ class Reservation(models.Model):
     room = models.ForeignKey(Room, on_delete = models.CASCADE)
     name = models.CharField(max_length=50)
     phone = models.CharField(max_length=50)
-    reservation_id = models.CharField(primary_key=True, unique=True, default=uuid.uuid4, max_length=10, editable=False)
+    reservation_id = models.AutoField(primary_key= True, unique=True, editable=False)
     # reservation_id = models.CharField(
     #     max_length = 10,
     #     blank=True,
@@ -65,5 +65,7 @@ class Reservation(models.Model):
     #     unique=True,
     #     default=create_new_ref_number()
     #   )
+    def __str__(self):
+        return str(self.reservation_id)
     class Meta:
         db_table = 'Reservation'
