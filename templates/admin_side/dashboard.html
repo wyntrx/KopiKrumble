@@ -98,40 +98,14 @@
             <form action="#">
               <div class="row">
                 
-                <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-                  <label for="checkout_date" class="font-weight-bold text-black">Date</label>
+                <div class="col-md-6 mb-3 mb-lg-0 col-lg-9">
                   <div class="field-icon-wrap">
-                    <div class="icon"><span class="icon-calendar"></span></div>
-                    <input type="text" id="checkout_date" class="form-control">
+                    <!-- <div class="icon"><span class="icon-calendar"></span></div> -->
+                   <!-- <input type="text" id="checkout_date" class="form-control"> -->
+                    <input name="search_res" id="search-focus" type="search" id="form1" class="form-control" placeholder="Search Here..."/>
                   </div>
                 </div>
-                <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
-                  <div class="row">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                      <label for="adults" class="font-weight-bold text-black">Time</label>
-                      <div class="field-icon-wrap">
-                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select name="" id="adults" class="form-control">
-                          <option value="">Morning</option>
-                          <option value="">Afternoon</option>
-                          <option value="">Evening</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-6 mb-3 mb-md-0">
-                      <label for="children" class="font-weight-bold text-black">Room Type</label>
-                      <div class="field-icon-wrap">
-                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select name="" id="children" class="form-control">
-                          <option value="">A</option>
-                          <option value="">B</option>
-                          <option value="">C</option>
-                          <option value="">D</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
                 <div class="col-md-6 col-lg-3 align-self-end">
                   <button class="btn btn-primary btn-block text-white">Search</button>
                 </div>
@@ -275,46 +249,91 @@
 
 
 
-<!--counter-->
-<div class="container">
-	<div class="row">
-	    <br/>
-	   <div class="col text-center">
-		<h2>Most Used Rooms</h2>
-		</div>
-		
-             
-		
-	</div>
-		<div class="row text-center">
-	        <div class="col">
-	        <div class="counter">
-      <h2 class="timer count-title count-number" data-to="100" data-speed="1500"></h2>
-       <h3 class="count-text ">Room A</h3>
-    </div>
-	        </div>
-              <div class="col">
-               <div class="counter">
-      <h2 class="timer count-title count-number" data-to="1700" data-speed="1500"></h2>
-      <h3 class="count-text ">Room B</h3>
-    </div>
+<!--counter most book room-->
+<section id="counterbookroom">
+  <div class="container">
+      <div class="title text-center">
+          <h1>Most Booked Room</h1>
+      </div>
+
+      <div class="row">
+          <div class="col-md-3">
+              <div class="card text-center">
+                  <img src="{% static 'images/img_1.jpg' %}" class="card-img-top" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Room A</h5>
+                      <h3>0</h3> <!--{{roomA_count}}-->
+                  </div>
               </div>
-              <div class="col">
-                  <div class="counter">
-      <h2 class="timer count-title count-number" data-to="11900" data-speed="1500"></h2>
-      <h3 class="count-text">Room C</h3>
-    </div></div>
-         </div>
-</div>
+          </div>
+          <div class="col-md-3">
+              <div class="card text-center">  
+                  <img src="{% static 'images/img_3.jpg' %}" class="card-img-top" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Room B</h5>
+                      <h3>0</h3> <!--{{roomB_count}}-->
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="card text-center">
+                  <img src="{% static 'images/img_4.jpg' %}" class="card-img-top" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Room C</h5>
+                       <h3>0</h3><!--{{roomC_count}}-->
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-center">
+                <img src="{% static 'images/img_5.jpg' %}" class="card-img-top" alt="Card image cap">
+                <div class="card-body">
+                      <h5 class="card-title">Room D</h5>
+                      <h3>0</h3><!--{{roomD_count}}-->
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</section>
 
+<!--Counter number of bookings-->
+<section id="counterbookroom">
+  <div class="container">
+      <div class="title text-center">
+          <h1>Number of Bookings</h1>
+      </div>
 
-
-<!--Graph-->
-Graph Here
-<canvas id="lineChart"></canvas>
-
-
-
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card text-center">
+                  <div class="card-body">
+                      <h5 class="card-title">Month</h5>
+                      <h3>0</h3>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card text-center">  
+                  <div class="card-body">
+                      <h5 class="card-title">Week</h5>
+                      <h3>0</h3>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card text-center">
+                  <div class="card-body">
+                      <h5 class="card-title">Day</h5>
+                       <h3>0</h3> 
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<br>
+<br>
 
 
 
