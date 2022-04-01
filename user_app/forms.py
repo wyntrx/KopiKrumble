@@ -7,9 +7,17 @@ from datetime import datetime
 from .models import *
 
 class createReservationForm(forms.ModelForm):
+    room = forms.ModelChoiceField(queryset=Room.objects.filter(status=1))
+    date = forms.DateField(
+        widget=forms.TextInput(     
+            attrs={'type': 'date'} 
+        )
+    )
+    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Enter your Name'})) 
+    phone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Enter your phone number'}))                              
     class Meta:
         model = Reservation
-        fields = ['date', 'name', 'phone']
+        fields = ['room', 'date', 'name', 'phone' ]
 
 class createRoomForm(forms.ModelForm):
     class Meta:

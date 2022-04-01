@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
     <!-- END head -->
 
     <section class="site-hero overlay" style="background-image: url({% static 'images/room1.jpg' %})" data-stellar-background-ratio="0.5">
@@ -31,26 +32,7 @@
                 <!-- <form method="POST" action="{% url 'user_app:add_new_user' %}" class="signup-form"></form> -->
                 <form method="POST" action="#" class="signup-form">
                   {% csrf_token %}
-                  <div class="form-group mb-3">
-                    <label class="font-weight-bold text-black" >Date:</label>
-                    <div class="field-icon-wrap">
-                      <div class="icon"><span class="icon-calendar"></span></div>
-                      <input type="date" id="date" name="date"  required="True" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group mb-3">
-                    <label class="font-weight-bold text-black" >Full name:</label>
-                    <div class="field-icon-wrap">
-                      <input name="name" type="text" class="form-control" placeholder="Enter your Full name">
-                    </div>
-                  </div>
-                  <div class="form-group mb-3">
-                    <label class="font-weight-bold text-black" for="lastname">Phone number:</label>
-                    <div class="field-icon-wrap">
-                      <input name="phone" type="text" class="form-control" placeholder="Enter your Phone number">
-                    </div>
-                    
-                  </div>
+                  {{ form|crispy }}
                     
                   <div class="form-group">
                     <button type="submit" class="form-control btn btn-danger submit px-3">Add</button>

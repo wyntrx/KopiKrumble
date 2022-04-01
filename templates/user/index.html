@@ -67,7 +67,7 @@
                   </div>
                 </div>
                 <div class="col-md-6 col-lg-3 align-self-end">
-                  <button class="btn btn-primary btn-block text-white">Check Availabilty</button>
+                  <button class="btn btn-primary btn-block text-white" id="check_availability" name="check_availability">Check Availability</button>
                 </div>
                
               </div>
@@ -93,14 +93,13 @@
                       <td>{{room.get_status_display}}</td>
                       <td>{{room.roomnumber}}</td>
                       <td>
-                          <a type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="           
-                          #newModal-{{room.id}}">View</a>
-                          <a type="button" class="btn btn-primary" href="{% url 'user_app:reservation_view' room.id %}">Reserve</a>
+                          <a type="button" class="btn btn-primary"  data-toggle="modal" data-target="#viewModal-{{room.id}}">View</a>
+                          <a type="button" class="btn btn-primary" href="{% url 'user_app:reservation_view' %}">Reserve</a>
                           
                       </td>      
                   </tr>
                   <!--view modal-->
-                  <div class="modal fade" id="newModal-{{room.id}}" role="dialog">
+                  <div class="modal fade" id="viewModal-{{room.id}}" role="dialog">
                     <div class="modal-dialog ">
                     </div>
                       <div class="modal-body">
@@ -112,7 +111,7 @@
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
-                              <form id="updateForm" method="post" >
+                              <form method="POST" >
                               {% csrf_token %}
                                 <div class="modal-body">
                                   <input type="number" name="u-id" value = {{room.id}} hidden>

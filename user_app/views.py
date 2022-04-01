@@ -37,19 +37,18 @@ import os
 #             return redirect('user_app:landing_view')
 
 
-def ReservationView(request, pk):
-    room = Room.objects.get(id=pk)
+def ReservationView(request):
     if request.method == 'POST':
-        form = createReservationForm(request.POST, instance=room)
+        form = createReservationForm(request.POST)
         if form.is_valid():
             form.save()
             customer_name = form.cleaned_data.get('name')
             messages.success(request, f'{customer_name} successfully reserved a room.')
             return redirect('user_app:reservation_view')
     else:
-        form = createReservationForm(request.POST, instance=room)
+        form = createReservationForm
     context = {
-        'form': form,
+        'form': form
     }
     return render(request, 'user/reservation.html', context)
     
@@ -60,7 +59,7 @@ class LoginView(View):
             return render(request, 'user/signin.html')
         else:
             if not request.user.is_staff:
-                return redirect("user_app:aboutus_view")
+                return redirect("user_app:landing_view")
             else:
                 return redirect("admin_app:dashboard")
                           
@@ -72,7 +71,7 @@ class LoginView(View):
             # print("hello")
             #login(request, user)
             if not request.user.is_staff:
-                return redirect("user_app:aboutus_view")
+                return redirect("user_app:landing_view")
             else:
                 return redirect("admin_app:dashboard") #user_dashboard_view
         else:

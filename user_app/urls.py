@@ -13,7 +13,7 @@ urlpatterns = [
     path('about',views.about, name = "about"),
     path('contact',views.contact, name = "contact"),
     path('login',views.login, name = "login"),
-    path('reservation/<int:pk>/',views.ReservationView, name="reservation_view"),
+    path('reservation/',views.ReservationView, name="reservation_view"),
     path('room',views.RoomView.as_view(), name="room_view"),
     
     
