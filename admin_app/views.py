@@ -80,9 +80,23 @@ class ListView(View):
 class Dashboard(View):
     def get(self, request):
         if request.user.is_staff:
-            reserve = Reservation.objects.all()
+            if 'search_res' in request.GET:
+                search_res = request.GET['search_res']
+                reserve = Reservation.objects.filter(reservation = search_res).order_by('date') #-->to be tested
+            else:
+                reserve = Reservation.objects.all().order_by('date')
+
+            #room_countA= Reservation.objects.count("id") --> for count not yet finish
+            #room_countB= Reservation.objects.count("id")
+            #room_countC= Reservation.objects.count("id")
+            #room_countD= Reservation.objects.count("id")
+            
             context = {
-                'reserve': reserve,
+            'reserve': reserve,
+             #'room_countA' = room_countA, --> for count not yet finish
+            #'room_countB' = room_countB,
+            #'room_countC' = room_countC,
+            #'room_countD' = room_countC,
             }
             return render(request,"admin_side/dashboard.html",context)
         else:
