@@ -3,7 +3,10 @@ from django.views.generic import View
 from user_app.models import User
 from user_app.models import Reservation
 from django.urls import reverse
+from django.db.models import Count
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib import messages
+from datetime import date, timedelta, datetime
 
 
 # Create your views here.
@@ -80,31 +83,52 @@ class ListView(View):
 class Dashboard(View):
     def get(self, request):
         if request.user.is_staff:
-            if 'search_res' in request.GET:
-                search_res = request.GET['search_res']
-                reserve = Reservation.objects.filter(reservation = search_res).order_by('date') #-->to be tested
-            else:
-                reserve = Reservation.objects.all().order_by('date')
+            #get counts
+            count_RoomA = Reservation.objects.filter(room = 1).count() #--> to be tested
+            count_RoomB = Reservation.objects.filter(room = 2).count()
+            count_RoomC = Reservation.objects.filter(room = 3).count()
+            count_RoomD = Reservation.objects.filter(room = 4).count()
+            #get counts Months
+            start_date = datetime.today()
+            mend_date = start_date + timedelta(days = 31)
+            #get counts Weeks
+            wend_date = start_date + timedelta(days = 7)
+            #get list & filter search
+            count_months = Reservation.objects.filter(date__range = [start_date, mend_date]).count()
+            count_weeks = Reservation.objects.filter(date__range = [start_date, wend_date]).count()
+            count_today = Reservation.objects.filter(date = start_date).count()
+            reserve = Reservation.objects.all().order_by('date')
 
-            #room_countA= Reservation.objects.count("id") --> for count not yet finish
-            #room_countB= Reservation.objects.count("id")
-            #room_countC= Reservation.objects.count("id")
-            #room_countD= Reservation.objects.count("id")
-            
             context = {
+            #List
             'reserve': reserve,
-             #'room_countA' = room_countA, --> for count not yet finish
-            #'room_countB' = room_countB,
-            #'room_countC' = room_countC,
-            #'room_countD' = room_countC,
+            #count_room context
+            'count_RoomA': count_RoomA, #--> to be tested
+            'count_RoomB': count_RoomB,
+            'count_RoomC': count_RoomC,
+            'count_RoomD': count_RoomD,
+            #count_Months\Days\Weeks T_T
+            'count_months' : count_months, #--> to be tested
+            'count_weeks' : count_weeks,
+            'count_today' : count_today,
             }
             return render(request,"admin_side/dashboard.html",context)
         else:
             return redirect("user_app:login_view")
         
     def post(self, request):
-        if request.method == 'POST':
-            if 'btnDelete' in request.POST:
+        if request.method == 'POST' :
+            if 'search_res' in request.POST:
+                search_res = request.POST.get('search_res')
+                reserve = Reservation.objects.filter(reservation_icontains = search_res).order_by('date') #-->to be tested
+                if len(reserve) == 0:
+                    messages.warning(request, "Please, Try Again!")
+                context = {
+                'reserve': reserve,
+                }
+                return render(request,"admin_side/dashboard.html", context)
+
+            elif 'btnDelete' in request.POST:
                 print("deleted")
                 cid = request.POST.get("reservation-id")
                 cust = Reservation.objects.filter(id = cid).delete()

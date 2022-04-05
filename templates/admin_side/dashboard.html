@@ -261,8 +261,8 @@
               <div class="card text-center">
                   <img src="{% static 'images/img_1.jpg' %}" class="card-img-top" alt="Card image cap">
                   <div class="card-body">
-                      <h5 class="card-title">Room A</h5>
-                      <h3>0</h3> <!--{{roomA_count}}-->
+                     <h5 class="card-title">Room A</h5>
+                      <h3>{{ count_RoomA }}</h3> 
                   </div>
               </div>
           </div>
@@ -271,7 +271,7 @@
                   <img src="{% static 'images/img_3.jpg' %}" class="card-img-top" alt="Card image cap">
                   <div class="card-body">
                       <h5 class="card-title">Room B</h5>
-                      <h3>0</h3> <!--{{roomB_count}}-->
+                      <h3>{{ count_RoomB }}</h3>
                   </div>
               </div>
           </div>
@@ -280,7 +280,7 @@
                   <img src="{% static 'images/img_4.jpg' %}" class="card-img-top" alt="Card image cap">
                   <div class="card-body">
                       <h5 class="card-title">Room C</h5>
-                       <h3>0</h3><!--{{roomC_count}}-->
+                       <h3>{{ count_RoomC }}</h3>
                   </div>
               </div>
           </div>
@@ -289,7 +289,7 @@
                 <img src="{% static 'images/img_5.jpg' %}" class="card-img-top" alt="Card image cap">
                 <div class="card-body">
                       <h5 class="card-title">Room D</h5>
-                      <h3>0</h3><!--{{roomD_count}}-->
+                      <h3>{{ count_RoomD }}</h3>
                 </div>
             </div>
         </div>
@@ -308,24 +308,24 @@
           <div class="col-md-4">
               <div class="card text-center">
                   <div class="card-body">
-                      <h5 class="card-title">Month</h5>
-                      <h3>0</h3>
+                      <h5 class="card-title">A Month</h5>
+                      <h3>{{ count_months }}</h3>
                   </div>
               </div>
           </div>
           <div class="col-md-4">
               <div class="card text-center">  
                   <div class="card-body">
-                      <h5 class="card-title">Week</h5>
-                      <h3>0</h3>
+                      <h5 class="card-title">A Week</h5>
+                      <h3>{{ count_weeks }}</h3>
                   </div>
               </div>
           </div>
           <div class="col-md-4">
               <div class="card text-center">
                   <div class="card-body">
-                      <h5 class="card-title">Day</h5>
-                       <h3>0</h3> 
+                      <h5 class="card-title">Today</h5>
+                       <h3>{{ count_today }}</h3> 
                   </div>
               </div>
           </div>
